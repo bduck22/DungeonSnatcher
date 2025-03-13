@@ -32,15 +32,15 @@ public class Movement : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown((KeyCode)PlayerPrefs.GetInt("JumpKey"))&&JumpTrigger){
+        if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("JumpKey"))&&JumpTrigger){
             JumpTrigger = false;
             PlayerManager.instance.PlayerRigid.AddForce(Vector2.up*JumpPower);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.layer == 3)
         {
             JumpTrigger = true;
         }
