@@ -1,13 +1,12 @@
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private int Speed;
     [SerializeField] private int JumpPower;
-    [SerializeField] private bool JumpTrigger;
     void Start()
     {
-        PlayerPrefs.SetInt("JumpKey",308);
+        //PlayerPrefs.SetInt("JumpKey",308);
     }
     void Update()
     {
@@ -32,17 +31,9 @@ public class Movement : MonoBehaviour
         }
 
 
-        if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("JumpKey"))&&JumpTrigger){
-            JumpTrigger = false;
+        if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("JumpKey"))&&PlayerManager.instance.JumpTrigger){
+            PlayerManager.instance.JumpTrigger = false;
             PlayerManager.instance.PlayerRigid.AddForce(Vector2.up*JumpPower);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 3)
-        {
-            JumpTrigger = true;
         }
     }
 }

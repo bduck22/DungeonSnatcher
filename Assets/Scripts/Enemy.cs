@@ -15,4 +15,11 @@ public class Enemy : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<PolygonCollider2D>())
+        {
+            Hp--;
+        }
+    }
 }

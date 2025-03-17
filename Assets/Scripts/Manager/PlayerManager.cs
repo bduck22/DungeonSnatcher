@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -13,11 +14,18 @@ public class PlayerManager : MonoBehaviour
         else Destroy(gameObject);
     }
     public int Hp;
+    public bool JumpTrigger;
+    public bool Invin;
+    public float InvinTime;
+    
 
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void HitAndInvin()
     {
-        PlayerManager.instance.Hp--;
+        Invin = true;
+        Invoke("InvinFalse", InvinTime);
+    }
+    void InvinFalse()
+    {
+        Invin = false;
     }
 }
