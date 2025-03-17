@@ -14,6 +14,8 @@ public class PlayerManager : MonoBehaviour
         else Destroy(gameObject);
     }
     public int Hp;
+    public float Speed;
+    public float JumpPower;
     public bool JumpTrigger;
     public bool Invin;
     public float InvinTime;

@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float Speed;
-    [SerializeField] private float JumpPower;
     void Start()
     {
         //PlayerPrefs.SetInt("JumpKey",308);
@@ -12,7 +10,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            PlayerManager.instance.PlayerRigid.linearVelocityX = Speed;
+            PlayerManager.instance.PlayerRigid.linearVelocityX = PlayerManager.instance.Speed;
             //transform.Translate(Speed*Time.deltaTime, 0, 0);
         }
         else if (Input.GetKeyUp(KeyCode.RightArrow))
@@ -23,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            PlayerManager.instance.PlayerRigid.linearVelocityX = -Speed;
+            PlayerManager.instance.PlayerRigid.linearVelocityX = -PlayerManager.instance.Speed;
             //transform.Translate(-Speed * Time.deltaTime, 0, 0);
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow)) {
@@ -33,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey((KeyCode)PlayerPrefs.GetInt("JumpKey"))&&PlayerManager.instance.JumpTrigger){
             PlayerManager.instance.JumpTrigger = false;
-            PlayerManager.instance.PlayerRigid.linearVelocityY = JumpPower;
+            PlayerManager.instance.PlayerRigid.linearVelocityY = PlayerManager.instance.JumpPower;
         }
     }
 }
